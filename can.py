@@ -14,6 +14,7 @@ class CAN():
         # For speed measurements
         self.previous_speed = 0
         self.speed = 0
+        ## jsjsjs
 
     def dissect_can_frame(self, frame):
         can_id, can_dlc, data = struct.unpack(self.can_frame_fmt, frame) 
