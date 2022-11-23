@@ -22,6 +22,7 @@ class CAN():
     def build_can_frame(self, can_id, data):
         can_dlc = len(data)
         data = data.ljust(8, b'\x00')
+        print(data) ###
         return struct.pack(self.can_frame_fmt, can_id, can_dlc, data)
     
     def send_can(self, data):
@@ -31,7 +32,6 @@ class CAN():
         ## Check this function
         data = speed
         can_data = self.build_can_frame(self.can_id, data)
-        print(can_data)
         self.s.send(can_data)
         
 
