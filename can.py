@@ -8,7 +8,7 @@ class CAN():
         self.can_frame_fmt = can_frame_fmt
         self.can_frame_size = struct.calcsize(can_frame_fmt)
         self.s = socket.socket(socket.AF_CAN, socket.SOCK_RAW, socket.CAN_RAW)
-        # self.s.bind((can_port,))
+        self.s.bind((can_port,))
 
 
         # For speed measurements
