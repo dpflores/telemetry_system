@@ -21,7 +21,7 @@ class CAN():
     
     def build_can_frame(self, can_id, data):
         can_dlc = len(data)
-        data = data.ljust(8, b'\x00')
+        data = data.rjust(8, b'\x00')
         print(data) ###
         return struct.pack(self.can_frame_fmt, can_id, can_dlc, data)
     
