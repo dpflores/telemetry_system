@@ -31,7 +31,7 @@ class CAN():
         ## Check this function
         data = speed
         can_data = self.build_can_frame(self.can_id, data)
-        print(can_data) ###
+        print(can_data)
         self.s.send(can_data)
         
 

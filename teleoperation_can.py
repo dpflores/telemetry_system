@@ -145,9 +145,21 @@ if __name__=="__main__":
         control_steering = makeSimpleProfile(control_steering, target_steering, (STEERING_STEP_SIZE/2.0))
 
         
+        
         int_speed_data = int(control_linear_vel)
-        speed_data = int_speed_data.to_bytes(2,'big')
-        print(speed_data)
+        
+        if (int_speed_data > 255):
+            vel0 = 255
+            vel1 = int_speed_data - 255
+        else:
+            vel0 = int_speed_data
+            vel1 = 0
+        
+        byte0 = vel0.to_bytes(1,'big')
+        byte1 = vel1.to_bytes(1,'big')
+ 
+        speed_data = byte1+byte0
+
         can.send_control(speed_data, 0)
     
 
